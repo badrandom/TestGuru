@@ -6,11 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Category.create([{title: 'Frontend'}, {title: 'Backend'}])
-Test.create([{title: 'Ruby', level: 0, category_id: Category.find_by(title: 'Backend').id},
-             {title: 'Rails', level: 1, category_id: Category.find_by(title: 'Backend').id},
-              {title: 'Rails', level: 2, category_id: Category.find_by(title: 'Backend').id},
-             {title: 'Javascript', level: 0, category_id: Category.find_by(title: 'Frontend').id},
-              {title: 'Javascript', level: 1, category_id: Category.find_by(title: 'Frontend').id}])
+backend_id = Category.find_by(title: 'Backend').id
+frontend_id = Category.find_by(title: 'Frontend').id
+Test.create([{title: 'Ruby', level: 0, category_id: backend_id},
+             {title: 'Rails', level: 1, category_id: backend_id},
+              {title: 'Rails', level: 2, category_id: backend_id},
+             {title: 'Javascript', level: 0, category_id: frontend_id},
+              {title: 'Javascript', level: 1, category_id: frontend_id}])
 
 Question.create([{body: 'Question 1', test_id: Test.find_by(title: 'Ruby', level: 0).id},
                   {body: 'Question 1', test_id: Test.find_by(title: 'Rails', level: 1).id},
